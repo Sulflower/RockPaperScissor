@@ -13,6 +13,8 @@ let cScore = 0;
 function switchDiv () {
     const initialPage = document.getElementById('main');
     const secondPage = document.getElementById('secScreen');
+    const snd = document.getElementById('player');
+    snd.src = '';
     initialPage.style.display = "none";
     secondPage.style.display = "block";
     console.log("Start button has been clicked");
