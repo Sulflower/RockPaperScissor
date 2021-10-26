@@ -2,7 +2,7 @@ let cnt = 0;
 // Set sound to 50 percent to not be annoying
 let snd = document.getElementById("player");
 let btnSound = new Audio("button-21.mp3")
-snd.volume = 0.3;
+snd.volume = 0.5;
 // Add an event listener to the start button of the game. 
 let startButt = document.querySelector('#start').addEventListener('click', switchDiv);
 
