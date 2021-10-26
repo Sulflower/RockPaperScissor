@@ -1,7 +1,8 @@
+let cnt = 0;
 // Set sound to 50 percent to not be annoying
 let snd = document.getElementById("player");
 let btnSound = new Audio("button-21.mp3")
-snd.volume = 0.5;
+snd.volume = 0.3;
 // Add an event listener to the start button of the game. 
 let startButt = document.querySelector('#start').addEventListener('click', switchDiv);
 
@@ -85,6 +86,8 @@ function win(playerSelection, computerSelection) {
 
 // Incrmement the global variable
 function increment (playerSelection, computerSelection, winner) {
+    // snd effects
+    let spook = new Audio('aot.mp3');
     // create an img element.
     let img = document.createElement("img");
     let img2 = document.createElement("img");
@@ -121,6 +124,11 @@ function increment (playerSelection, computerSelection, winner) {
     playerScore.innerText = pScore;
     computerScore.innerText = cScore;
 
+    if (cScore == 4 && cnt == 0) {
+        spook.play();
+        cnt = 1;
+    }
+
     
     // check if anyone is at 5.
     if (pScore >= 5) {
@@ -128,12 +136,14 @@ function increment (playerSelection, computerSelection, winner) {
         alert("You WIN!");
         pScore = 0;
         cScore = 0;
+        cnt = 0;
     } 
     if (cScore >= 5) {
         alert("You LOSE!");
         console.log("YOU LOSe!!!")
         pScore = 0;
         cScore = 0;
+        cnt = 0; 
     }
 
     // Update the counter on screen. 
