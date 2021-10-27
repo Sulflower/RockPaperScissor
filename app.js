@@ -5,19 +5,23 @@ const secondPage = document.getElementById('secScreen');
 const choiceBox = document.getElementById('choices');
 const optBox = document.getElementById('options');
 
-
+// A cnt to toggle music on and off
 let cnt = 0;
 let cnt1 = 0;
 let cnt2 = 0;
 
+// Audio files that are used. 
 let spook = new Audio('aot.mp3');
 let tie = new Audio('power.mp3');
 let winMusic = new Audio('gudjob.mp3');
 
-// Set sound to 50 percent to not be annoying
+// Set sound to 30 percent to not be annoying
 let snd = document.getElementById("player");
-let btnSound = new Audio("button-21.mp3")
 snd.volume = 0.3;
+
+// the sound when a button is pressed. 
+let btnSound = new Audio("button-21.mp3")
+
 // Add an event listener to the start button of the game. 
 let startButt = document.querySelector('#start').addEventListener('click', toggle);
 // let againButt = document.querySelector('#butt1').addEventListener('click', toggleScreen);
@@ -29,6 +33,8 @@ playerSelection.forEach(x => x.addEventListener('click', playerChoice));
 // Player and computer score
 let pScore = 0;
 let cScore = 0;
+
+// This is called after the user presses try again. 
 function toggleScreen() {
     console.log("im here");
     wpage.style.display = "none";
@@ -36,17 +42,20 @@ function toggleScreen() {
     optBox.style.display = "flex";
     choiceBox.style.display = "flex";
 
-    document.getElementById("winText").innerHTML = "You win. Rock beats scissor!";
+    // document.getElementById("winText").innerHTML = "You win. Rock beats scissor!";
     document.getElementById("uid").src = "";
     document.getElementById("cid").src = "";
 }
+
+// Switches the div to a win or lose div
 function switchDiv(y) {
-    // 'x' is cur and 'y' is what to display. 
     optBox.style.display = "none";
     choiceBox.style.display = "none";
     y.style.display = "flex"
 }
-// Function that let you swtich div
+
+
+// Function that let you switch from intro screen to second screen. 
 function toggle() {
     // const initialPage = document.getElementById('main');
     // const secondPage = document.getElementById('secScreen');
@@ -190,6 +199,7 @@ function increment (playerSelection, computerSelection, winner) {
     playerScore.innerText = pScore;
     computerScore.innerText = cScore;
 }
+
 
 // Main function to play the game. 
 function playRound(playerSelection, computerSelection) {
