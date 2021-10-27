@@ -7,6 +7,13 @@ const optBox = document.getElementById('options');
 
 
 let cnt = 0;
+let cnt1 = 0;
+let cnt2 = 0;
+
+let spook = new Audio('aot.mp3');
+let tie = new Audio('power.mp3');
+let winMusic = new Audio('gudjob.mp3');
+
 // Set sound to 50 percent to not be annoying
 let snd = document.getElementById("player");
 let btnSound = new Audio("button-21.mp3")
@@ -29,6 +36,7 @@ function toggleScreen() {
     optBox.style.display = "flex";
     choiceBox.style.display = "flex";
 
+    document.getElementById("winText").innerHTML = "You win. Rock beats scissor!";
     document.getElementById("uid").src = "";
     document.getElementById("cid").src = "";
 }
@@ -44,6 +52,7 @@ function toggle() {
     // const secondPage = document.getElementById('secScreen');
     // const snd = document.getElementById('player');
     // snd.src = '';
+
     initialPage.style.display = "none";
     secondPage.style.display = "block";
     console.log("Start button has been clicked");
@@ -101,8 +110,8 @@ function win(playerSelection, computerSelection) {
             return 'p';
         }
         else {
-            document.getElementById("winText").innerHTML = "You lose. scissors beats rock!";
-            console.log("You lose. scissors beats rock!");
+            document.getElementById("winText").innerHTML = "You lose. scissors beats paper!";
+            console.log("You lose. scissors beats paper!");
             return 's';
         }
     }
@@ -111,7 +120,6 @@ function win(playerSelection, computerSelection) {
 // Incrmement the global variable
 function increment (playerSelection, computerSelection, winner) {
     // snd effects
-    let spook = new Audio('aot.mp3');
     // create an img element.
     let img = document.createElement("img");
     let img2 = document.createElement("img");
@@ -147,8 +155,12 @@ function increment (playerSelection, computerSelection, winner) {
     // Update the counter on screen. 
     playerScore.innerText = pScore;
     computerScore.innerText = cScore;
-
-    if (cScore == 4 && cnt == 0) {
+    
+    if (cScore == 4 && pScore == 4 && cnt1 == 0) {
+        tie.play();
+        cnt1 = 1;
+    }
+    else if (cScore == 4 && cnt == 0) {
         spook.play();
         cnt = 1;
     }
@@ -162,6 +174,8 @@ function increment (playerSelection, computerSelection, winner) {
         cScore = 0;
         cnt = 0;
         switchDiv(wpage);
+        winMusic.play();
+ 
     } 
     if (cScore >= 5) {
         // alert("You LOSE!");
