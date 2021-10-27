@@ -1,10 +1,19 @@
+const lpage = document.getElementById('lose');
+const wpage = document.getElementById('win');
+const initialPage = document.getElementById('main');
+const secondPage = document.getElementById('secScreen');
+const choiceBox = document.getElementById('choices');
+const optBox = document.getElementById('options');
+
+
 let cnt = 0;
 // Set sound to 50 percent to not be annoying
 let snd = document.getElementById("player");
 let btnSound = new Audio("button-21.mp3")
 snd.volume = 0.3;
 // Add an event listener to the start button of the game. 
-let startButt = document.querySelector('#start').addEventListener('click', switchDiv);
+let startButt = document.querySelector('#start').addEventListener('click', toggle);
+// let againButt = document.querySelector('#butt1').addEventListener('click', toggleScreen);
 
 // Record the players choice
 let playerSelection = document.querySelectorAll('.butt');
@@ -13,11 +22,26 @@ playerSelection.forEach(x => x.addEventListener('click', playerChoice));
 // Player and computer score
 let pScore = 0;
 let cScore = 0;
+function toggleScreen() {
+    console.log("im here");
+    wpage.style.display = "none";
+    lpage.style.display = "none";
+    optBox.style.display = "flex";
+    choiceBox.style.display = "flex";
 
+    document.getElementById("uid").src = "";
+    document.getElementById("cid").src = "";
+}
+function switchDiv(y) {
+    // 'x' is cur and 'y' is what to display. 
+    optBox.style.display = "none";
+    choiceBox.style.display = "none";
+    y.style.display = "flex"
+}
 // Function that let you swtich div
-function switchDiv () {
-    const initialPage = document.getElementById('main');
-    const secondPage = document.getElementById('secScreen');
+function toggle() {
+    // const initialPage = document.getElementById('main');
+    // const secondPage = document.getElementById('secScreen');
     // const snd = document.getElementById('player');
     // snd.src = '';
     initialPage.style.display = "none";
@@ -133,17 +157,19 @@ function increment (playerSelection, computerSelection, winner) {
     // check if anyone is at 5.
     if (pScore >= 5) {
         console.log("YOU WIN!!!")
-        alert("You WIN!");
+        // alert("You WIN!");
         pScore = 0;
         cScore = 0;
         cnt = 0;
+        switchDiv(wpage);
     } 
     if (cScore >= 5) {
-        alert("You LOSE!");
+        // alert("You LOSE!");
         console.log("YOU LOSe!!!")
         pScore = 0;
         cScore = 0;
         cnt = 0; 
+        switchDiv(lpage);
     }
 
     // Update the counter on screen. 

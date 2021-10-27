@@ -107,8 +107,13 @@ body {
     display: none;
 }
 
-
-
+#win, #lose {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
 #d1, #d2 {
     overflow: hidden;
     white-space: nowrap;
@@ -122,7 +127,7 @@ body {
     to { width: 100%;}
 }
 
-.butt {
+.butt, .butt1 {
     display: inline-block;
     padding:0.7em 1.4em;
     margin:0 0.3em 0.3em 0;
