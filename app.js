@@ -42,7 +42,7 @@ function toggleScreen() {
     optBox.style.display = "flex";
     choiceBox.style.display = "flex";
 
-    // document.getElementById("winText").innerHTML = "You win. Rock beats scissor!";
+    document.getElementById("winText").innerHTML = "&zwnj;";
     document.getElementById("uid").src = "";
     document.getElementById("cid").src = "";
 }
